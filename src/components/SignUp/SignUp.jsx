@@ -2,6 +2,7 @@ import { createUserWithEmailAndPassword } from 'firebase/auth';
 import React, { useState } from 'react';
 import auth from '../../firebase.init';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
 
 const SignUp = () => {
     const [success, setSuccess] = useState(false);
@@ -89,12 +90,19 @@ const SignUp = () => {
                 <div className="form-control mt-6">
                     <button className="btn btn-primary">Sign Up</button>
                 </div>
-                {
-                    errorMessage && <p className='text-red-500'>{errorMessage}</p>
-                }
-                {
-                    success && <p className='text-green-500'>User created successfully!</p>
-                }
+                
+                <div className='mb-2 mx-auto'>
+                    {
+                        errorMessage && <p className='text-red-500'>{errorMessage}</p>
+                    }
+                    {
+                        success && <p className='text-green-500'>User created successfully!</p>
+                    }
+                </div>
+
+                <div>
+                    <p className="text-center py-2">Allredy have an account? <Link to="/login" className='underline'>Login</Link> </p>
+                </div>
             </form>
         </div>
     );
