@@ -29,6 +29,13 @@ const SignUp = () => {
             return;
         }
 
+        const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{6,}$/;
+
+        if (!passwordRegex.test(password)){
+            setErrorMessage("Password must be 6+ characters with an uppercase, lowercase, number, and special character.")
+            return;
+        }
+
         createUserWithEmailAndPassword(auth, email, password)
             .then((result) => {
                 console.log(result.user);
